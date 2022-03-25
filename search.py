@@ -32,7 +32,7 @@ def createDatasetPaths():
 	for x in range(6):
 		for y in range(28):
 			for key in offsetMap:
-				paths.append(data_path+"speaker"+str(x+1)+"clip"+str(y+1)+offsetMap[key])
+				paths.append(data_path+"speaker"+str(x+1)+"clip"+str(y+1)+"offset"+offsetMap[key])
 
 	return paths
 
