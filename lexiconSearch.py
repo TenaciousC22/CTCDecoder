@@ -93,6 +93,8 @@ data=data[0]
 # create BK-tree from a list of words
 bk_tree = BKTree(data)
 
+print(bk_tree)
+
 for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
 
