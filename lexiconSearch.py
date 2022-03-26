@@ -32,7 +32,9 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 	lm = LanguageModel(modelText, chars)
 
 	# use best path decoding to get an approximation
-	approx = beam_search(arr, chars,beam_width=25, lm=lm)
+	approx = beam_search(arr, chars, beam_width=25, lm=lm)
+
+	print(approx, tolerance)
 
 	# get similar words from dictionary within given tolerance
 	words = bk_tree.query(approx, tolerance)
