@@ -8,3 +8,5 @@ for x in range(1,len(lines)):
 	modelText=modelText+" "+lines[x]
 
 lexiconWords=modelText.split()
+
+print(lexiconWords)
