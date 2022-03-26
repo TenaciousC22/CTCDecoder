@@ -18,4 +18,6 @@ while x < len(lexiconWords):
 	else:
 		x+=1
 
-print(lexiconWords)
+with open("dict.csv","w") as f:
+	write=csv.writer(f)
+	write.wrtierow(lexiconWords)
