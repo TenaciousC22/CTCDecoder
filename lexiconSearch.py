@@ -37,18 +37,21 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 	approx=approx.split()
 
 	# get similar words from dictionary within given tolerance
+	output=[]
 	for word in approx:
 		words = bk_tree.query(word, tolerance)
-		print(words)
 
-	# # if there are no similar words, return empty string
-	# if not words:
-	# 	return ''
 
-	# # else compute probabilities of all similar words and return best scoring one
-	# word_probs = [(w, probability(mat, w, chars)) for w in words]
-	# word_probs.sort(key=lambda x: x[1], reverse=True)
-	# return word_probs[0][0]
+		# if there are no similar words, skip this round
+		if not words:
+			continue
+
+		# else compute probabilities of all similar words and return best scoring one
+		word_probs = [(w, probability(mat, w, chars)) for w in words]
+		word_probs.sort(key=lambda x: x[1], reverse=True)
+		output.append(word_probs[0][0])
+
+	print(output)
 
 def createDatasetPaths():
 	paths=[]
