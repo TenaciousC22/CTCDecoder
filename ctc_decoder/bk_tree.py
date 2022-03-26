@@ -33,6 +33,7 @@ class BKTree:
     def _query(self, node, txt, tolerance):
         # handle empty root node
         if node is None:
+            print("here")
             return []
 
         # distance between query and current node
