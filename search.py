@@ -1,5 +1,7 @@
 import numpy as np
 from ctc_decoder import beam_search
+from progressbar import progressbar
+from tqdm import tqdm
 
 offsetMap={
 	0:"I840",
@@ -38,7 +40,7 @@ def createDatasetPaths():
 
 data_paths=createDatasetPaths()
 
-for entry in data_paths:
-	print(entry)
+for x in tqdm(range(data_paths)):
+	arr=np.load(data_paths[x])
 
-#print(f'Beam search: "{beam_search(mat, chars)}"')
+	print(f'Beam search: "{beam_search(arr, chars)}"')
