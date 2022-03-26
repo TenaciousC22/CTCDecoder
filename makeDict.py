@@ -20,4 +20,4 @@ while x < len(lexiconWords):
 
 with open("dict.csv","w") as f:
 	write=csv.writer(f)
-	write.wrtierow(lexiconWords)
+	write.writerow(lexiconWords)
