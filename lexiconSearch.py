@@ -45,11 +45,12 @@ with open("dict.csv",newline='') as f:
 	data = list(reader)
 
 data=data[0]
-bk_tree = BKTree(data)
 
 # create BK-tree from a list of words
-# for x in tqdm(range(len(data_paths))):
-# 	arr=np.load(data_paths[x])
+bk_tree = BKTree(data)
 
-# # and use the tree in the lexicon search
-# res = lexicon_search(mat, chars, bk_tree, tolerance=2)
+for x in tqdm(range(len(data_paths))):
+	arr=np.load(data_paths[x])
+
+	# and use the tree in the lexicon search
+	res=lexicon_search(arr, chars, bk_tree, tolerance=2)
