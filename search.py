@@ -28,6 +28,12 @@ chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
 
 data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors/"
 
+with open("targetsPunctuated.txt") as f:
+	lines=[line.rstrip('\n') for line in f]
+
+for line in lines:
+	print(line)
+
 lm = LanguageModel('I WONDER IF THIS NEEDS TO BE ALL CAPS', chars)
 
 def createDatasetPaths():
