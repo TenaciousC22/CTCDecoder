@@ -1,5 +1,5 @@
 import numpy as np
-from ctc_decoder import beam_search
+from ctc_decoder import beam_search, LanguageModel
 #from progressbar import progressbar
 from tqdm import tqdm
 
@@ -28,6 +28,8 @@ chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
 
 data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors/"
 
+lm = LanguageModel('this is some text', chars)
+
 def createDatasetPaths():
 	paths=[]
 
@@ -43,4 +45,4 @@ data_paths=createDatasetPaths()
 for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
 
-	print(f'Beam search: "{beam_search(arr, chars,beam_width=10)}"')
+	print(f'Beam search: "{beam_search(arr, chars,beam_width=25, lm=lm)}"')
