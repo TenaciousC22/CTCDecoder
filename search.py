@@ -43,4 +43,4 @@ data_paths=createDatasetPaths()
 for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
 
-	print(f'Beam search: "{beam_search(arr, chars)}"')
+	print(f'Beam search: "{beam_search(arr, chars,beam_width=10)}"')
