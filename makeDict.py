@@ -9,4 +9,6 @@ for x in range(1,len(lines)):
 
 lexiconWords=modelText.split()
 
+lexiconWords.sort()
+
 print(lexiconWords)
