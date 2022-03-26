@@ -1,6 +1,6 @@
 import numpy as np
 from ctc_decoder import beam_search
-from progressbar import progressbar
+#from progressbar import progressbar
 from tqdm import tqdm
 
 offsetMap={
