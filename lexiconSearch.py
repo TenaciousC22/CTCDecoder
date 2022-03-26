@@ -44,6 +44,8 @@ with open("dict.csv",newline='') as f:
 	reader = csv.reader(f)
 	data = list(reader)
 
+data=data[0]
+
 print(data)
 # # create BK-tree from a list of words
 # bk_tree = BKTree(['words', 'from', 'a', 'dictionary'])
