@@ -29,7 +29,7 @@ chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
 data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors/"
 
 with open("targetsPunctuated.txt") as f:
-	lines=[upper(line.rstrip('\n')) for line in f]
+	lines=[line.rstrip('\n').upper() for line in f]
 
 for line in lines:
 	print(line)
