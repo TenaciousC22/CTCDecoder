@@ -11,4 +11,11 @@ lexiconWords=modelText.split()
 
 lexiconWords.sort()
 
+x=1
+while x < len(lexiconWords):
+	if lexiconWords[x-1]==lexiconWords[x]:
+		lexiconWords.pop(x)
+	else:
+		x+=1
+
 print(lexiconWords)
