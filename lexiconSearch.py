@@ -54,3 +54,4 @@ for x in tqdm(range(len(data_paths))):
 
 	# and use the tree in the lexicon search
 	res=lexicon_search(arr, chars, bk_tree, tolerance=2)
+	print(res)
