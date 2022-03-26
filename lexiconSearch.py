@@ -47,9 +47,7 @@ with open("dict.csv",newline='') as f:
 data=data[0]
 bk_tree = BKTree(data)
 
-# # create BK-tree from a list of words
-
-
+# create BK-tree from a list of words
 # for x in tqdm(range(len(data_paths))):
 # 	arr=np.load(data_paths[x])
 
