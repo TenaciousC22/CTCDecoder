@@ -28,7 +28,7 @@ chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
 
 data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors/"
 
-lm = LanguageModel('this is some text', chars)
+lm = LanguageModel('I WONDER IF THIS NEEDS TO BE ALL CAPS', chars)
 
 def createDatasetPaths():
 	paths=[]
