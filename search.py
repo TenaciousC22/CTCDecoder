@@ -34,21 +34,21 @@ with open("targetsPunctuated.txt") as f:
 for line in lines:
 	print(line)
 
-lm = LanguageModel('I WONDER IF THIS NEEDS TO BE ALL CAPS', chars)
+# lm = LanguageModel('I WONDER IF THIS NEEDS TO BE ALL CAPS', chars)
 
-def createDatasetPaths():
-	paths=[]
+# def createDatasetPaths():
+# 	paths=[]
 
-	for x in range(6):
-		for y in range(28):
-			for key in offsetMap:
-				paths.append(data_path+"speaker"+str(x+1)+"clip"+str(y+1)+"offset"+offsetMap[key]+".npy")
+# 	for x in range(6):
+# 		for y in range(28):
+# 			for key in offsetMap:
+# 				paths.append(data_path+"speaker"+str(x+1)+"clip"+str(y+1)+"offset"+offsetMap[key]+".npy")
 
-	return paths
+# 	return paths
 
-data_paths=createDatasetPaths()
+# data_paths=createDatasetPaths()
 
-for x in tqdm(range(len(data_paths))):
-	arr=np.load(data_paths[x])
+# for x in tqdm(range(len(data_paths))):
+# 	arr=np.load(data_paths[x])
 
-	print(f'Beam search: "{beam_search(arr, chars,beam_width=25, lm=lm)}"')
+# 	print(f'Beam search: "{beam_search(arr, chars,beam_width=25, lm=lm)}"')
