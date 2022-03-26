@@ -47,13 +47,17 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int,
 
 def createDatasetPaths():
 	paths=[]
+	speakers=[]
+	clips=[]
 
 	for x in range(6):
 		for y in range(28):
 			for key in offsetMap:
+				speakers.append(x+1)
+				clips.append(y+1)
 				paths.append(data_path+"speaker"+str(x+1)+"clip"+str(y+1)+"offset"+offsetMap[key]+".npy")
 
-	return paths
+	return paths,speakers,clips
 
 offsetMap={
 	0:"I840",
@@ -74,12 +78,10 @@ offsetMap={
 	15:"jumble"
 }
 
-#mat = np.array([[0.4, 0, 0.6], [0.4, 0, 0.6]])
-#chars = 'ab'
 chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
 data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors/"
 
-data_paths=createDatasetPaths()
+data_paths,speakers,clips=createDatasetPaths()
 
 with open("targetsPunctuated.txt") as f:
 	lines=[line.rstrip('\n').upper() for line in f]
@@ -99,9 +101,11 @@ data=data[0]
 # create BK-tree from a list of words
 bk_tree = BKTree(data)
 
+save_arr=[]
 for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
 
 	# and use the tree in the lexicon search
 	res=lexicon_search(arr, chars, bk_tree, tolerance=2, lm=lm)
-	#print(res)
+	save_arr.append([speakers[i],clips[i],offsetMap[i%16],res])
+	print([speakers[i],clips[i],offsetMap[i%16],res])
