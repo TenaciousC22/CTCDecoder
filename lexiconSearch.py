@@ -40,6 +40,8 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int,
 		if not words:
 			continue
 
+		print(words)
+
 		# else compute probabilities of all similar words and return best scoring one
 		word_probs = [(w, probability(mat, w, chars)) for w in words]
 		word_probs.sort(key=lambda x: x[1], reverse=True)
