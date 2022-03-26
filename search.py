@@ -31,8 +31,11 @@ data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterEx
 with open("targetsPunctuated.txt") as f:
 	lines=[line.rstrip('\n').upper() for line in f]
 
-for line in lines:
-	print(line)
+modelText=lines[0]
+for x in range(1,len(lines)):
+	modelText=modelText+" "+lines[x]
+
+print(modelText)
 
 # lm = LanguageModel('I WONDER IF THIS NEEDS TO BE ALL CAPS', chars)
 
