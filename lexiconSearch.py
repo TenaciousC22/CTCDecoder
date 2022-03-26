@@ -5,7 +5,7 @@ from ctc_decoder.loss import probability
 from ctc_decoder import beam_search, BKTree, LanguageModel
 from tqdm import tqdm
 
-def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int) -> str:
+def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int, lm: Optional[LanguageModel] = None) -> str:
 	"""Lexicon search decoder.
 
 	The algorithm computes a first approximation using best path decoding. Similar words are queried using the BK tree.
@@ -17,21 +17,13 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 		chars: The set of characters the neural network can recognize, excluding the CTC-blank.
 		bk_tree: Instance of BKTree which is used to query similar words.
 		tolerance: Words to be considered, which are within specified edit distance.
+		lm: Language model
 
 	Returns:
-		The decoded text.
+		A list of words
 	"""
 
-	with open("targetsPunctuated.txt") as f:
-		lines=[line.rstrip('\n').upper() for line in f]
-
-	modelText=lines[0]
-	for x in range(1,len(lines)):
-		modelText=modelText+" "+lines[x]
-
-	lm = LanguageModel(modelText, chars)
-
-	# use best path decoding to get an approximation
+	# use beam search decoding to get an approximation
 	approx = beam_search(arr, chars, beam_width=25, lm=lm)
 
 	approx=approx.split()
@@ -51,7 +43,7 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 		word_probs.sort(key=lambda x: x[1], reverse=True)
 		output.append(word_probs[0][0])
 
-	print(output)
+	return " ".join(output)
 
 def createDatasetPaths():
 	paths=[]
@@ -89,6 +81,15 @@ data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterEx
 
 data_paths=createDatasetPaths()
 
+with open("targetsPunctuated.txt") as f:
+	lines=[line.rstrip('\n').upper() for line in f]
+
+modelText=lines[0]
+for x in range(1,len(lines)):
+	modelText=modelText+" "+lines[x]
+
+lm = LanguageModel(modelText, chars)
+
 with open("dict.csv",newline='') as f:
 	reader = csv.reader(f)
 	data = list(reader)
@@ -102,5 +103,5 @@ for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
 
 	# and use the tree in the lexicon search
-	res=lexicon_search(arr, chars, bk_tree, tolerance=2)
+	res=lexicon_search(arr, chars, bk_tree, tolerance=2, lm)
 	#print(res)
