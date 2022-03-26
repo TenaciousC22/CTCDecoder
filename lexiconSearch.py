@@ -28,6 +28,8 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int,
 
 	approx=approx.split()
 
+	print(approx)
+
 	# get similar words from dictionary within given tolerance
 	output=[]
 	for word in approx:
