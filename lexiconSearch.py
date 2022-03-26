@@ -28,8 +28,6 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int,
 
 	approx=approx.split()
 
-	print(approx)
-
 	# get similar words from dictionary within given tolerance
 	output=[]
 	for word in approx:
@@ -39,8 +37,6 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int,
 		# if there are no similar words, skip this round
 		if not words:
 			continue
-
-		print(words)
 
 		# else compute probabilities of all similar words and return best scoring one
 		word_probs = [(w, probability(mat, w, chars)) for w in words]
