@@ -34,10 +34,10 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 	# use best path decoding to get an approximation
 	approx = beam_search(arr, chars,beam_width=25, lm=lm)
 
-	print(approx)
-
 	# get similar words from dictionary within given tolerance
 	words = bk_tree.query(approx, tolerance)
+
+	print(words)
 
 	# if there are no similar words, return empty string
 	if not words:
@@ -92,8 +92,6 @@ data=data[0]
 
 # create BK-tree from a list of words
 bk_tree = BKTree(data)
-
-print(bk_tree)
 
 for x in tqdm(range(len(data_paths))):
 	arr=np.load(data_paths[x])
