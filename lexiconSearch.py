@@ -34,21 +34,21 @@ def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int)
 	# use best path decoding to get an approximation
 	approx = beam_search(arr, chars, beam_width=25, lm=lm)
 
-	print(approx, tolerance)
+	approx=approx.split()
 
 	# get similar words from dictionary within given tolerance
-	words = bk_tree.query(approx, tolerance)
+	for word in approx
+		words = bk_tree.query(word, tolerance)
+		print(words)
 
-	print(words)
+	# # if there are no similar words, return empty string
+	# if not words:
+	# 	return ''
 
-	# if there are no similar words, return empty string
-	if not words:
-		return ''
-
-	# else compute probabilities of all similar words and return best scoring one
-	word_probs = [(w, probability(mat, w, chars)) for w in words]
-	word_probs.sort(key=lambda x: x[1], reverse=True)
-	return word_probs[0][0]
+	# # else compute probabilities of all similar words and return best scoring one
+	# word_probs = [(w, probability(mat, w, chars)) for w in words]
+	# word_probs.sort(key=lambda x: x[1], reverse=True)
+	# return word_probs[0][0]
 
 def createDatasetPaths():
 	paths=[]
