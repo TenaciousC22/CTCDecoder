@@ -102,8 +102,8 @@ data=data[0]
 bk_tree = BKTree(data)
 
 save_arr=[]
-for x in tqdm(range(len(data_paths))):
-	arr=np.load(data_paths[x])
+for i in tqdm(range(len(data_paths))):
+	arr=np.load(data_paths[i])
 
 	# and use the tree in the lexicon search
 	res=lexicon_search(arr, chars, bk_tree, tolerance=2, lm=lm)
