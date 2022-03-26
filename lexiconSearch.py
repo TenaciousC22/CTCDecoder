@@ -5,7 +5,7 @@ from ctc_decoder.loss import probability
 from ctc_decoder import beam_search, BKTree, LanguageModel
 from tqdm import tqdm
 
-def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int, lm: Optional[LanguageModel] = None) -> str:
+def lexicon_search(mat: np.ndarray, chars: str, bk_tree: BKTree, tolerance: int, lm: LanguageModel) -> str:
 	"""Lexicon search decoder.
 
 	The algorithm computes a first approximation using best path decoding. Similar words are queried using the BK tree.
