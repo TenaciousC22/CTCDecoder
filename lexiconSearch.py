@@ -45,10 +45,10 @@ with open("dict.csv",newline='') as f:
 	data = list(reader)
 
 data=data[0]
+bk_tree = BKTree(data)
 
-print(data)
 # # create BK-tree from a list of words
-# bk_tree = BKTree(['words', 'from', 'a', 'dictionary'])
+
 
 # for x in tqdm(range(len(data_paths))):
 # 	arr=np.load(data_paths[x])
