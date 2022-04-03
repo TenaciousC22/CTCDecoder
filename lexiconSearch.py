@@ -110,6 +110,6 @@ for i in tqdm(range(len(data_paths))):
 	save_arr.append([speakers[i],clips[i],offsetMap[i%16],res])
 	#print([speakers[i],clips[i],offsetMap[i%16],res])
 
-with open("predicitve_coding_word_output.csv","w") as file:
+with open("predictive_coding_word_output.csv","w") as file:
 	writer=csv.writer(file,delimiter=',')
 	writer.writerows(save_arr)
