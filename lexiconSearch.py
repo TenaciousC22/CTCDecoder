@@ -79,7 +79,7 @@ offsetMap={
 }
 
 chars=" ETOAINSHRLDUYWGCMFBP'VKJXQZ0192856734"
-data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors_16_layer/"
+data_path="/home/analysis/Documents/studentHDD/chris/predictiveCodingCharacterExperiment/tensors_1_layer/"
 
 data_paths,speakers,clips=createDatasetPaths()
 
@@ -110,6 +110,6 @@ for i in tqdm(range(len(data_paths))):
 	save_arr.append([speakers[i],clips[i],offsetMap[i%16],res])
 	#print([speakers[i],clips[i],offsetMap[i%16],res])
 
-with open("predictive_coding_16_layer_word_output.csv","w") as file:
+with open("predictive_coding_1_layer_word_output.csv","w") as file:
 	writer=csv.writer(file,delimiter=',')
 	writer.writerows(save_arr)
